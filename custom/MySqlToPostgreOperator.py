@@ -1,7 +1,10 @@
-from airflow.hooks.base import BaseHook
+# Airflow Intermediate MySQLToPostgresOperator
+# by jerryespn
+# August 2022
+
+from airflow.models.baseoperator import BaseOperator
 from airflow.hooks.mysql_hook import MySqlHook
 from airflow.providers.postgres.hooks.postgres import PostgresHook
-from airflow.models.baseoperator import BaseOperator
 from airflow.utils.decorators import apply_defaults
 
 
@@ -13,7 +16,7 @@ class MySqlToPostgreOperator(BaseOperator):
                  target_table=None,
                  identifier=None,
                  mysql_conn_id='mySQL_local', 
-                 postgres_conn_id='postgresq_local',
+                 postgres_conn_id='postgres_local',
                  *args,
                  **kwargs):
         
@@ -48,6 +51,5 @@ class MySqlToPostgreOperator(BaseOperator):
                            target_fields=target_fields,
                            replace_index=self.identifier,
                            replace=True)
-        
         cursor.close()
         conn.close()
