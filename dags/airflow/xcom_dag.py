@@ -1,3 +1,9 @@
+# Airflow Intermediate Job Trial User
+# by jerryespn
+# August 2022
+
+
+#Library Import
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
